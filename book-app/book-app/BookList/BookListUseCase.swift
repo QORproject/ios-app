@@ -19,10 +19,7 @@ protocol BookListUseCase {
 }
 
 struct BookListUseCaseImpl: BookListUseCase {
-    let repository: BookRepository
-    init(repository: BookRepository) {
-        self.repository = repository
-    }
+    let repository: BookRepository = BookRepositoryImpl()
 
     // fetch系は
     // Result<[Book](←JSON), HTTPError> -> DataState<[Book](←convertする必要がないので変化なし), HTTPError> へと変換し、VMへDataStateを渡す

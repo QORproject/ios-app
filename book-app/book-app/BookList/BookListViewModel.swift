@@ -30,14 +30,14 @@ protocol BookListViewModelOutput {
 }
 
 /// inputs, outputsしか定義されていないので、VMへのアクセス時には必ず (Viewからの) 入力なのか出力なのかを制限できる → 実装者によるブレを減らせる
-protocol BookListViewModelType: BookListViewModelAction, BookListViewModelOutput {
+protocol BookListViewModelProtocol: BookListViewModelAction, BookListViewModelOutput {
     var action: BookListViewModelAction { get }
     var output: BookListViewModelOutput { get }
 }
 
 // MARK: - ViewModel
 
-final class BookListViewModel: BookListViewModelType {
+final class BookListViewModel: BookListViewModelProtocol {
     var action: BookListViewModelAction { self }
     var output: BookListViewModelOutput { self }
 
